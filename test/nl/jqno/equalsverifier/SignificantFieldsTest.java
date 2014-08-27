@@ -45,6 +45,13 @@ public class SignificantFieldsTest {
 	public void allFieldsUsed() {
 		EqualsVerifier.forClass(FinalPoint.class).allFieldsShouldBeUsed().verify();
 	}
+    
+	@Test
+	public void noFieldsAdded() {
+		EqualsVerifier.forClass(NoFieldsAdded.class)
+				.allFieldsShouldBeUsed()
+				.verify();
+	}
 	
 	@Test
 	public void oneFieldUnused() {
@@ -281,6 +288,12 @@ public class SignificantFieldsTest {
 		}
 	}
 	
+	static final class NoFieldsAdded extends Point {
+		public NoFieldsAdded(int x, int y) {
+			super(x, y);
+		}
+	}
+    
 	static final class TwoFieldsUnusedColorPoint {
 		private final int x;
 		private final int y;
